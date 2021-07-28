@@ -1,0 +1,25 @@
+<h1>Edit book: {{book.title}}</h1>
+<a routerLink="/books">books</a>
+<form #editForm="ngForm" (ngSubmit)="edit(book.id,editForm)">
+  <table>
+    <tr>
+      <td>title</td>
+      <td><input type="text" name="name"  #title="ngModel" required [(ngModel)]="book.title"></td>
+      <td *ngIf="editForm.valid&& title.touched && isSubmit">
+        <p *ngIf="title.errors?.required"> not null</p>
+      </td>
+    </tr>
+    <tr>
+      <td>author</td>
+      <td><input type="text" name="author" [(ngModel)]="book.author"></td>
+    </tr>
+    <tr>
+      <td>Description:</td>
+      <td><input type="text" name="description" [(ngModel)]="book.description"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button>Edit</button></td>
+    </tr>
+  </table>
+</form>

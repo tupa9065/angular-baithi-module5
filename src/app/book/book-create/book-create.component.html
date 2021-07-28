@@ -1,0 +1,25 @@
+<h1>Create new book</h1>
+<a routerLink="/books">books</a>
+<form #createForm="ngForm" (ngSubmit)="create(createForm)">
+  <table>
+    <tr>
+      <td>title</td>
+      <td><input type="text" name="title"  #title="ngModel" required [(ngModel)]="book.title"></td>
+      <td *ngIf="createForm.valid&& title.touched && isSubmit">
+        <p *ngIf="title.errors?.required"> not null</p>
+      </td>
+    </tr>
+    <tr>
+      <td>author</td>
+      <td><input type="text" name="author"  [(ngModel)]="book.author"></td>
+    </tr>
+    <tr>
+      <td>Description:</td>
+      <td><input type="text" name="description" [(ngModel)]="book.description"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button>Create</button></td>
+    </tr>
+  </table>
+</form>
